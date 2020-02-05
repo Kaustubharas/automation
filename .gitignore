@@ -1,0 +1,9 @@
+# Codeception
+target/
+test-output/
+.settings/
+extent.html
+.classpath
+.project
+
+
