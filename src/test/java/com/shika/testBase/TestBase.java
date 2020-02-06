@@ -17,6 +17,8 @@ import com.aventstack.extentreports.ExtentReports;
 import com.aventstack.extentreports.ExtentTest;
 import com.aventstack.extentreports.reporter.ExtentHtmlReporter;
 
+import io.github.bonigarcia.wdm.WebDriverManager;
+
 public class TestBase {
 
 	public static Properties properties;
@@ -46,6 +48,8 @@ public class TestBase {
 				System.getProperty("user.dir") + "/src/main/java/com/shika/config/properties.properties");
 
 		properties.load(fis);
+
+		WebDriverManager.chromedriver().setup();
 
 		ChromeOptions options = new ChromeOptions();
 		options.addArguments("--headless");
