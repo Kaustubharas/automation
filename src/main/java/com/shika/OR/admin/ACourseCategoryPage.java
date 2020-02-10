@@ -19,7 +19,8 @@ public class ACourseCategoryPage {
 		 * throw new IllegalStateException("This is not Course Category Page");
 		 * 
 		 * }
-		 */		
+		 */
+		
 	}
 
 	@FindBy(how = How.CSS, using = "button[onclick*='category.add']")

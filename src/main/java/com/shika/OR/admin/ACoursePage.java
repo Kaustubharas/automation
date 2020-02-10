@@ -4,7 +4,6 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.How;
-import org.openqa.selenium.support.PageFactory;
 
 public class ACoursePage {
 	
@@ -51,11 +50,8 @@ public class ACoursePage {
 	public static WebElement limit;
 	
 	public ACoursePage(WebDriver driver) {
-				
-		ACoursePage.driver = driver;
 		
-		PageFactory.initElements(driver, ACoursePage.class);
-
+		ACoursePage.driver = driver;
 	}
 
 	public static ACreateCoursePage createCourse(WebDriver driver) {

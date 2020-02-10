@@ -13,14 +13,14 @@ public class ALoginTest extends TestBase {
 	@Test(dataProvider = "adminlogin", dataProviderClass = DataProviderClass.class)
 
 	public static void adminLogin(String testDesc, String un, String pw, String expMessage) {
-
-		PageFactory.initElements(driver, ALoginPage.class);
-	
-		test = extent.createTest("adminlogin");
-
-		test.info("This step shows usage of info(details)");
+		
+        test = extent.createTest("adminlogin");
+        
+        test.info("This step shows usage of info(details)");
 
 		driver.get(properties.getProperty("url") + "administrator");
+
+		PageFactory.initElements(driver, ALoginPage.class);
 
 		if (!testDesc.equals("valid")) {
 

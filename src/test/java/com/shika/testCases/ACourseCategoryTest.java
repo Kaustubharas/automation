@@ -23,7 +23,6 @@ public class ACourseCategoryTest extends TestBase {
 		if (testDesc.equals("valid")) {
 
 			ACreateCourseCategoryPage.createCategoryAs(name);
-			System.out.println("ACourseCategoryTest");
 
 		}
 	}

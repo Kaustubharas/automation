@@ -11,9 +11,9 @@ public class ACourseModulesPage {
 	private static WebDriver driver;
 
 	public ACourseModulesPage(WebDriver driver) {
-		
+
 		ACourseModulesPage.driver = driver;
-	
+
 	}
 
 	@FindBy(how = How.XPATH, using = "//a[normalize-space()=\"Back to courses\"]")

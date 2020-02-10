@@ -12,6 +12,12 @@ public class ALoginPage {
 	public ALoginPage(WebDriver driver) {
 
 		ALoginPage.driver = driver;
+		
+        if (!"Shika QA - Administration".equals(driver.getTitle())) {
+            // Alternatively, we could navigate to the login page, perhaps logging out first
+            throw new IllegalStateException("This is not the login page");
+        }
+
 	}
 
 	@FindBy(how = How.ID, using = "mod-login-username")

@@ -60,7 +60,6 @@ public class ACreateCoursePage {
 	public ACreateCoursePage(WebDriver driver) {
 
 		ACreateCoursePage.driver = driver;
-		
 	}
 
 	public static ACreateCoursePage courseTitle(String name) {
@@ -88,8 +87,6 @@ public class ACreateCoursePage {
 	}
 
 	public static ACoursePage createCourse(String name, String desc) {
-		
-		System.out.println("ACoursePage");
 		
 		ADashboardPage.menuCourses();
 		

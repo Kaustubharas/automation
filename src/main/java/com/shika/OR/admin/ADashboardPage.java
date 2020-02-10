@@ -4,27 +4,24 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.How;
-import org.openqa.selenium.support.PageFactory;
 
 public class ADashboardPage {
 
-	WebDriver driver;
+	private static WebDriver driver;
 
 	public ADashboardPage(WebDriver driver) {
-		
-		this.driver = driver;
-		
-		PageFactory.initElements(driver, ADashboardPage.class);
+
+		ADashboardPage.driver = driver;
 
 	}
 
-	public static void menuCourses() {
+	public static ACoursePage menuCourses() {
 		
 		System.out.println("ADashboardPage.. menuCourses");
 		
 		menu_courses.click();
 		
-		System.out.println("menuCourses");
+		return new ACoursePage(driver);
 	}
 
 	@FindBy(how = How.XPATH, using = "//ul[@id=\"submenu\"]//a[contains(text(),'Dashboard')]")

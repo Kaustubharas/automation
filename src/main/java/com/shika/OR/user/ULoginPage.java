@@ -12,7 +12,7 @@ public class ULoginPage {
 	public ULoginPage(WebDriver driver) {
 
 		ULoginPage.driver = driver;
-		
+
 	}
 
 	@FindBy(how = How.ID, using = "username")
@@ -57,7 +57,7 @@ public class ULoginPage {
 
 	public static UDashboardPage submitLogin() {
 
-		password.click();
+		loginBtn.click();
 
 		return new UDashboardPage(driver);
 	}
