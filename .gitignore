@@ -1,7 +1,9 @@
-# Codeception
-target/
-test-output/
-.settings/
+# Automation
 extent.html
+testData.xlsx
+target/*
+test-output/*
+.settings/*
+
 
 
