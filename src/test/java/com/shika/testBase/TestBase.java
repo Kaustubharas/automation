@@ -51,11 +51,16 @@ public class TestBase {
 
 		WebDriverManager.chromedriver().setup();
 
-		ChromeOptions chromeOptions = new ChromeOptions();
+		ChromeOptions options = new ChromeOptions();
 
-		chromeOptions.addArguments("--headless");
+		System.setProperty("webdriver.chrome.args", "--disable-logging");
 
-		driver = new ChromeDriver(chromeOptions);
+		System.setProperty("webdriver.chrome.silentOutput", "true");
+
+		options.addArguments("--headless", "--log-level=3", "--no-sandbox", "--disable-gpu", "--window-size=1920,1200",
+				"--ignore-certificate-errors");
+
+		driver = new ChromeDriver(options);
 
 		driver.manage().window().maximize();
 
