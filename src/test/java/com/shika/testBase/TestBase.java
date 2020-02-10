@@ -80,8 +80,6 @@ public class TestBase {
 	@AfterMethod
 	public void afterMethod() {
 
-//		log.info("Closing Chrome Browser...");
-
 	}
 
 	@AfterClass

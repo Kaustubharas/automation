@@ -30,8 +30,9 @@ public class ACreateLessonTest extends TestBase {
 		driver.get("http://vowel.uniteframework.io/administrator/index.php?option=com_tjlms&view=dashboard");
 		
 		if (testDesc.equals("valid")) {
+			System.out.println(System.getProperty("user.dir")+"/"+filePath);
+			ACourseModulesPage.createLesson(lessonFormat, name, System.getProperty("user.dir")+"/"+filePath);
 			
-			ACourseModulesPage.createLesson(lessonFormat, name, filePath);
 
 		}
 	}
