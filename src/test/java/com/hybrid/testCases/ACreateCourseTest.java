@@ -6,7 +6,7 @@ import java.lang.reflect.Method;
 import org.testng.annotations.Test;
 
 import com.hybrid.dataproviders.DataProviderClass;
-import com.hybrid.or.admin.ACreateCoursePage;
+import com.hybrid.pages.ACreateCoursePage;
 import com.hybrid.testbase.TestBase;
 
 public class ACreateCourseTest extends TestBase {

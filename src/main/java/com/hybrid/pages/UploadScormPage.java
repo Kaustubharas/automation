@@ -1,4 +1,4 @@
-package com.hybrid.or.admin;
+package com.hybrid.pages;
 
 public class UploadScormPage {
 	

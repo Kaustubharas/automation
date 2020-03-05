@@ -1,4 +1,4 @@
-package com.hybrid.or.admin;
+package com.hybrid.pages;
 
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -9,33 +9,33 @@ import org.openqa.selenium.support.PageFactory;
 import com.aventstack.extentreports.Status;
 import com.hybrid.testbase.TestBase;
 
-public class ULoginPage extends TestBase {
+public class ALoginPage extends TestBase{
 
 	private WebDriver driver;
 
-	public ULoginPage(WebDriver driver) {
+	public ALoginPage(WebDriver driver) {
 
 		this.driver = driver;
-
+		
 		PageFactory.initElements(driver, this);
 
 	}
 
-	@FindBy(how = How.ID, using = "username")
+	@FindBy(how = How.ID, using = "mod-login-username")
 	public WebElement uEmail;
 
-	@FindBy(how = How.CSS, using = "div.alert.alert-warning div p")
+	@FindBy(how = How.CSS, using = "div[class=\"alert-message\"]")
 	public WebElement alertMessage;
 
-	@FindBy(how = How.ID, using = "password")
+	@FindBy(how = How.ID, using = "mod-login-password")
 	public WebElement uPassword;
 
-	@FindBy(how = How.CSS, using = "button[type=\"submit\"]")
+	@FindBy(how = How.CSS, using = "button[class*=\"login\"]")
 	public WebElement btnLogin;
 
-	public ULoginPage username(String username) {
-
-		logger.info("Entering username as >> " + username);
+	public ALoginPage username(String username) {
+		
+		logger.info("Entering username as >> "+ username);
 
 		uEmail.sendKeys(username);
 
@@ -49,9 +49,10 @@ public class ULoginPage extends TestBase {
 
 	}
 
-	public ULoginPage password(String password) {
+	public ALoginPage password(String password) {
+		
+		logger.info("Entering password as >> "+ password);
 
-		logger.info("Entering password as >> " + password);
 
 		uPassword.sendKeys(password);
 
@@ -65,31 +66,31 @@ public class ULoginPage extends TestBase {
 
 	}
 
-	public UDashboardPage submitLogin() {
-		
+	public ADashboardPage submitLogin() {
+
 		logger.info("Clicking on Login button");
 		
 		btnLogin.click();
 		
 		logger.log(Status.PASS, "Login Successful");
 
-		return new UDashboardPage(driver);
+		return new ADashboardPage(driver);
 	}
 
-	public ULoginPage submitLoginExpectingFailure(String username, String password) {
+	public ALoginPage submitLoginExpectingFailure(String username, String password) {
 
 		username(username);
 
 		password(password);
 
 		btnLogin.submit();
-		
-		logger.log(Status.FAIL, "Login Failed!!! Bad Credentials");
 
+		logger.log(Status.FAIL, "Login Failed! Bad Credentials");
+		
 		return this;
 	}
 
-	public UDashboardPage loginAs(String username, String password) {
+	public ADashboardPage loginAs(String username, String password) {
 
 		username(username);
 

@@ -8,7 +8,7 @@ import org.testng.Assert;
 import org.testng.annotations.Test;
 
 import com.hybrid.dataproviders.DataProviderClass;
-import com.hybrid.or.admin.ULoginPage;
+import com.hybrid.pages.ULoginPage;
 import com.hybrid.testbase.TestBase;
 
 public class ULoginTest extends TestBase {
