@@ -5,7 +5,7 @@ import java.lang.reflect.Method;
 
 import org.testng.annotations.Test;
 
-import com.shika.DR.DataProviderClass;
+import com.shika.dataproviders.DataProviderClass;
 import com.shika.or.admin.ACreateCourseCategoryPage;
 import com.shika.testbase.TestBase;
 

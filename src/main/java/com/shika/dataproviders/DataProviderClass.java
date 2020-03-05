@@ -1,4 +1,4 @@
-package com.shika.DR;
+package com.shika.dataproviders;
 
 import java.io.IOException;
 
