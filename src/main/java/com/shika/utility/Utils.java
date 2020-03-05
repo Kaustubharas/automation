@@ -1,5 +1,5 @@
 package com.shika.utility;
 
-public class Utils {
+public interface Utils {
 
 }

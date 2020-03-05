@@ -1,4 +1,4 @@
-package com.shika.OR.user;
+package com.shika.or.admin;
 
 import org.openqa.selenium.WebDriver;
 

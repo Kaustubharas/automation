@@ -1,31 +1,29 @@
 package com.shika.testCases;
 
-import org.openqa.selenium.support.PageFactory;
+import org.testng.annotations.Test;
+import java.lang.reflect.Method;
+
 import org.testng.annotations.Test;
 
 import com.shika.DR.DataProviderClass;
-import com.shika.OR.admin.ACoursePage;
-import com.shika.OR.admin.ACreateCoursePage;
-import com.shika.OR.admin.ADashboardPage;
-import com.shika.testBase.TestBase;
+import com.shika.or.admin.ACreateCoursePage;
+import com.shika.testbase.TestBase;
 
 public class ACreateCourseTest extends TestBase {
 
 	@Test(dataProvider = "createCourse", dataProviderClass = DataProviderClass.class)
 
-	public static void createCourse(String testDesc, String name, String desc, String expMessage) {
-
-		PageFactory.initElements(driver, ACoursePage.class);
-
-		PageFactory.initElements(driver, ACreateCoursePage.class);
+	public void createCourse(String testDesc, String name, String desc, String expMessage, Method method) {
 		
-		PageFactory.initElements(driver, ADashboardPage.class);
+		logger = extent.createTest(method.getName().toString());
+
+		ACreateCoursePage coursePage = new ACreateCoursePage(driver);
 		
-		driver.get("http://vowel.uniteframework.io/administrator/index.php?option=com_tjlms&view=dashboard");
+		driver.get(properties.getProperty("url")+"administrator/index.php?option=com_tjlms&view=dashboard");
 		
 		if (testDesc.equals("valid")) {
 
-			ACreateCoursePage.createCourse(name, desc);
+			coursePage.createCourse(name, desc);
 
 		}
 	}

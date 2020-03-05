@@ -1,9 +1,8 @@
 # Automation
 extent.html
+AutomationReport.html
 testData.xlsx
 target/*
 test-output/*
 .settings/*
-
-
-
+/target/

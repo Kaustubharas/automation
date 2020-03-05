@@ -1,4 +1,4 @@
-package com.shika.testBase;
+package com.shika.testbase;
 
 import java.io.FileInputStream;
 import java.util.Properties;
@@ -6,7 +6,6 @@ import java.util.concurrent.TimeUnit;
 
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
-import org.openqa.selenium.chrome.ChromeOptions;
 import org.testng.annotations.AfterClass;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.AfterSuite;
@@ -23,20 +22,18 @@ public class TestBase {
 
 	public static Properties properties;
 
-	protected static WebDriver driver;
+	public static WebDriver driver;
 
-	// protected final Logger log = LogManager.getLogger(this.getClass());
+	public static ExtentHtmlReporter htmlReporter;
 
-	protected static ExtentHtmlReporter htmlReporter;
+	public static ExtentReports extent;
 
-	protected static ExtentReports extent;
-
-	protected static ExtentTest test;
+	public static  ExtentTest logger;
 
 	@BeforeSuite
 	public void beforeSuite() throws Exception {
-
-		htmlReporter = new ExtentHtmlReporter("extent.html");
+				
+		htmlReporter = new ExtentHtmlReporter("AutomationReport.html");
 
 		extent = new ExtentReports();
 
@@ -51,16 +48,20 @@ public class TestBase {
 
 		WebDriverManager.chromedriver().setup();
 
-		ChromeOptions options = new ChromeOptions();
+		/*
+		 * ChromeOptions options = new ChromeOptions();
+		 * 
+		 * System.setProperty("webdriver.chrome.args", "--disable-logging");
+		 * 
+		 * System.setProperty("webdriver.chrome.silentOutput", "true");
+		 * 
+		 * options.addArguments("--headless", "--log-level=3", "--no-sandbox",
+		 * "--disable-gpu", "--window-size=1920,1200", "--ignore-certificate-errors");
+		 * 
+		 * driver = new ChromeDriver(options);
+		 */
 
-		System.setProperty("webdriver.chrome.args", "--disable-logging");
-
-		System.setProperty("webdriver.chrome.silentOutput", "true");
-
-		options.addArguments("--headless", "--log-level=3", "--no-sandbox", "--disable-gpu", "--window-size=1920,1200",
-				"--ignore-certificate-errors");
-
-		driver = new ChromeDriver(options);
+		driver = new ChromeDriver();
 
 		driver.manage().window().maximize();
 
@@ -76,6 +77,7 @@ public class TestBase {
 	public void beforeClass() {
 
 	}
+	
 
 	@AfterMethod
 	public void afterMethod() {
@@ -95,5 +97,4 @@ public class TestBase {
 		extent.flush();
 
 	}
-
 }

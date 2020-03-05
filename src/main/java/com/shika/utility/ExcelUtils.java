@@ -1,7 +1,6 @@
 package com.shika.utility;
 
 import java.io.FileInputStream;
-import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.util.Iterator;
@@ -25,11 +24,11 @@ public class ExcelUtils {
 
 	static DataFormatter formatter;
 
-	static int RowNum;
+	static int rowNum;
 
 	static int colNum;
 
-	public static Object[][] getExcelData(String filePath, String sheetName) throws Exception {
+	public static Object[][] getExcelData(String filePath, String sheetName) throws IOException {
 
 		FileInputStream fis;
 
@@ -43,13 +42,13 @@ public class ExcelUtils {
 
 		row = worksheet.getRow(0);
 
-		RowNum = worksheet.getPhysicalNumberOfRows();
+		rowNum = worksheet.getPhysicalNumberOfRows();
 
 		colNum = row.getLastCellNum();
 
-		Object[][] excelData = new Object[RowNum - 1][colNum];
+		Object[][] excelData = new Object[rowNum - 1][colNum];
 
-		for (int i = 0; i < RowNum - 1; i++) {
+		for (int i = 0; i < rowNum - 1; i++) {
 
 			row = worksheet.getRow(i + 1);
 
@@ -67,7 +66,7 @@ public class ExcelUtils {
 
 	}
 
-	public static void setExcelData(String Result, String filePath, String sheetName, String colName) {
+	public static void setExcelData(String result, String filePath, String sheetName, String colName) {
 
 		worksheet = workbook.getSheet(sheetName);
 
@@ -81,13 +80,13 @@ public class ExcelUtils {
 
 			if (cell.getStringCellValue().equals(colName)) {
 
-				cell.setCellValue(Result);
+				cell.setCellValue(result);
 
 			} else {
 
 				cell = row.createCell(colNum + 1);
 
-				cell.setCellValue(Result);
+				cell.setCellValue(result);
 			}
 		}
 
@@ -100,11 +99,7 @@ public class ExcelUtils {
 
 			fos.close();
 
-		} catch (FileNotFoundException e) {
-
-			e.printStackTrace();
-
-		} catch (IOException e) {
+		} catch (Exception e) {
 
 			e.printStackTrace();
 

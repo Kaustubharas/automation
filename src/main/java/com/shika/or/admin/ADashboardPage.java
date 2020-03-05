@@ -1,103 +1,103 @@
-package com.shika.OR.admin;
+package com.shika.or.admin;
 
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.How;
+import org.openqa.selenium.support.PageFactory;
 
 public class ADashboardPage {
 
-	private static WebDriver driver;
+	private WebDriver driver;
 
 	public ADashboardPage(WebDriver driver) {
 
-		ADashboardPage.driver = driver;
+		this.driver = driver;
 
-	}
+		PageFactory.initElements(driver, this);
 
-	public static ACoursePage menuCourses() {
-		
-		System.out.println("ADashboardPage.. menuCourses");
-		
-		menu_courses.click();
-		
-		return new ACoursePage(driver);
 	}
 
 	@FindBy(how = How.XPATH, using = "//ul[@id=\"submenu\"]//a[contains(text(),'Dashboard')]")
 
-	public static WebElement menu_dashboard;
+	public WebElement menuDashboard;
 
 	@FindBy(how = How.XPATH, using = "//ul[@id=\"submenu\"]//a[contains(text(),'TjDashboard')]")
 
-	public static WebElement menu_tjdashboard;
+	public WebElement menuTjdashboard;
 
 	@FindBy(how = How.XPATH, using = "//ul[@id=\"submenu\"]//a[contains(text(),'Course Categories')]")
 
-	public static WebElement menu_courseCategories;
+	public WebElement menuCourseCategories;
 
 	@FindBy(how = How.XPATH, using = "//ul[@id=\"submenu\"]//a[contains(text(),'Courses')]")
 
-	public static WebElement menu_courses;
+	public WebElement menuCourses;
 
 	@FindBy(how = How.XPATH, using = "//ul[@id=\"submenu\"]//a[contains(text(),'Field Groups')]")
 
-	public static WebElement menu_courseGroupFields;
+	public WebElement menuCourseGroupFields;
 
 	@FindBy(how = How.XPATH, using = "//ul[@id=\"submenu\"]//a[contains(text(),'Fields')]")
 
-	public static WebElement menu_courseFields;
+	public WebElement menuCourseFields;
 
 	@FindBy(how = How.XPATH, using = "//ul[@id=\"submenu\"]//a[contains(text(),'Categories')]")
 
-	public static WebElement menu_lessonCategories;
+	public WebElement menuLessonCategories;
 
 	@FindBy(how = How.XPATH, using = "//ul[@id=\"submenu\"]//a[contains(text(),'Manage Lessons (Alpha)')]")
 
-	public static WebElement menu_manageLessons;
+	public WebElement menuManageLessons;
 
 	@FindBy(how = How.XPATH, using = "//ul[@id=\"submenu\"]//a[contains(text(),'Question Categories')]")
 
-	public static WebElement menu_questionCategories;
+	public WebElement menuQuestionCategories;
 
 	@FindBy(how = How.XPATH, using = "//ul[@id=\"submenu\"]//a[contains(text(),' Question Bank')]")
 
-	public static WebElement menu_questionBank;
+	public WebElement menuQuestionBank;
 
 	@FindBy(how = How.XPATH, using = "//ul[@id=\"submenu\"]//a[contains(text(),'Manage Enrollments')]")
 
-	public static WebElement menu_manageEnrollments;
+	public WebElement menuManageEnrollments;
 
 	@FindBy(how = How.XPATH, using = "//ul[@id=\"submenu\"]//a[contains(text(),'Certificate Templates')]")
 
-	public static WebElement menu_certificateTemplates;
+	public WebElement menuCertificateTemplates;
 
 	@FindBy(how = How.XPATH, using = "//ul[@id=\"submenu\"]//a[contains(text(),'Coupons')]")
 
-	public static WebElement menu_coupons;
+	public WebElement menuCoupons;
 
 	@FindBy(how = How.XPATH, using = "//ul[@id=\"submenu\"]//a[contains(text(),'Reminders')]")
 
-	public static WebElement menu_reminders;
+	public WebElement menuReminders;
 
 	@FindBy(how = How.XPATH, using = "//ul[@id=\"submenu\"]//a[contains(text(),'Orders')]")
 
-	public static WebElement menu_orders;
+	public WebElement menuOrders;
 
 	@FindBy(how = How.XPATH, using = "//ul[@id=\"submenu\"]//a[contains(text(),'Attempts')]")
 
-	public static WebElement menu_attempts;
+	public WebElement menuAttempts;
 
 	@FindBy(how = How.XPATH, using = "//ul[@id=\"submenu\"]//a[contains(text(),'Notification Templates')]")
 
-	public static WebElement menu_notifications;
+	public WebElement menuNotifications;
 
 	@FindBy(how = How.XPATH, using = "//ul[@id=\"submenu\"]//a[contains(text(),'Reports')]")
 
-	public static WebElement menu_reports;
+	public WebElement menuReports;
 
 	@FindBy(how = How.XPATH, using = "//ul[@id=\"submenu\"]//a[contains(text(),'Tools')]")
 
-	public static WebElement menu_tools;
+	public WebElement menuTools;
 
+	public ACoursePage courseMenu() {
+
+		menuCourses.click();
+
+		return new ACoursePage(driver);
+	}
 }

@@ -1,151 +1,181 @@
-package com.shika.OR.admin;
+package com.shika.or.admin;
 
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.How;
+import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.Select;
 
-public class LessonDetailsPage {
+import com.aventstack.extentreports.Status;
+import com.gargoylesoftware.htmlunit.WebConsole.Logger;
+import com.shika.testbase.TestBase;
 
-	private static WebDriver driver;
+public class LessonDetailsPage extends TestBase {
 
-	static Select sc;
+	private WebDriver driver;
+
+	Select sc;
 
 	public LessonDetailsPage(WebDriver driver) {
 
-		LessonDetailsPage.driver = driver;
+		this.driver = driver;
+
+		PageFactory.initElements(driver, this);
 
 	}
 
 	@FindBy(how = How.XPATH, using = "//input[@id=\"jform_title\"]")
-	public static WebElement lessonName;
+	public WebElement lessonName;
 
 	@FindBy(how = How.XPATH, using = "//fieldset[@id=\"jform_state\"]")
-	public static WebElement lessonStatus;
+	public WebElement lessonStatus;
 
 	@FindBy(how = How.XPATH, using = "//select[@id=\"jform_catid\"]")
-	public static WebElement lessonCategory;
+	public WebElement lessonCategory;
 
 	@FindBy(how = How.XPATH, using = "//textarea[@id=\"jform_description\"]")
-	public static WebElement lessonDesc;
+	public WebElement lessonDesc;
 
 	@FindBy(how = How.XPATH, using = "//input[@id=\"jform_start_date\"]")
-	public static WebElement lessonStartDate;
+	public WebElement lessonStartDate;
 
 	@FindBy(how = How.XPATH, using = "//input[@id=\"jform_end_date\"]")
-	public static WebElement lessonEndDate;
+	public WebElement lessonEndDate;
 
 	@FindBy(how = How.XPATH, using = "//input[@id=\"jform_image\"]")
-	public static WebElement lessonImage;
+	public WebElement lessonImage;
 
 	@FindBy(how = How.XPATH, using = "//input[@id=\"jform_no_of_attempts\"]")
-	public static WebElement lessonAttempts;
+	public WebElement lessonAttempts;
 
 	@FindBy(how = How.XPATH, using = "jform_attempts_grade")
-	public static WebElement lessonAttemptsGrading;
+	public WebElement lessonAttemptsGrading;
 
 	@FindBy(how = How.XPATH, using = "//input[@value=\"Type or select some options\"]")
-	public static WebElement lessonPrerequisites;
+	public WebElement lessonPrerequisites;
 
 	@FindBy(how = How.XPATH, using = "//fieldset[@id=\"jform_consider_marks\"]")
-	public static WebElement lessonConsiderForPassing;
+	public WebElement lessonConsiderForPassing;
 
 	@FindBy(how = How.XPATH, using = "//fieldset[@id=\"jform_in_lib\"]")
-	public static WebElement lessonShowInLibrary;
+	public WebElement lessonShowInLibrary;
 
 	@FindBy(how = How.XPATH, using = "//input[@id=\"jform_ideal_time\"]")
-	public static WebElement lessonIdealTime;
+	public WebElement lessonIdealTime;
 
 	@FindBy(how = How.XPATH, using = "//select[@id=\"jform_params_lesson_layout\"]")
-	public static WebElement lessonLayout;
+	public WebElement lessonLayout;
 
 	@FindBy(how = How.XPATH, using = "//button[normalize-space()=\"Save & Next\"]")
-	public static WebElement lessonNext;
+	public WebElement btnLessonNext;
 
 	@FindBy(how = How.CSS, using = "button[onclick=\"Joomla.submitbutton('lesson.save')\"]")
-	public static WebElement lessonSave;
+	public WebElement lessonSave;
 
 	@FindBy(how = How.XPATH, using = "//input[@id=\"scorm_upload\"]")
-	public static WebElement uploadScrom;
+	public WebElement uploadScormFile;
 
 	@FindBy(how = How.XPATH, using = "//input[@id=\"tjhtmlzips_upload\"]")
-	public static WebElement uploadHtml;
+	public WebElement uploadHtmlFile;
 
 	@FindBy(how = How.XPATH, using = "//input[@id=\"document_upload\"]")
-	public static WebElement uploadDocument;
+	public WebElement uploadDocumentFile;
 
 	@FindBy(how = How.XPATH, using = "//div[contains(text(), \"Successfully uploaded the\")]")
 
-	public static WebElement msgSuccess;
+	public WebElement msgSuccess;
 
 	@FindBy(how = How.CSS, using = "select[id=\"lesson_formatsubformat\"]")
 
-	public static WebElement lessonSubFormat;
+	public WebElement lessonSubFormat;
 
-	public static LessonDetailsPage lessonBasicDetails(String name) {
+	public LessonDetailsPage lessonBasicDetails(String name) {
+
+		logger.info("Creating a lesson with name >>" + name);
 
 		lessonName.sendKeys(name);
 
 		return lessonNext();
 	}
 
-	public static LessonDetailsPage lessonNext() {
+	public LessonDetailsPage lessonNext() {
 
 		JavascriptExecutor js = ((JavascriptExecutor) driver);
 		js.executeScript("window.scrollTo(0, document.body.scrollHeight)");
 
-		lessonNext.click();
+		btnLessonNext.click();
 
-		return new LessonDetailsPage(driver);
+		logger.info("Clicking on Next button");
+
+		return this;
 	}
 
-	public static ACourseModulesPage uploadScrom(String filePath) {
+	public ACourseModulesPage uploadScorm(String filePath) {
 
-		uploadScrom.sendKeys(filePath);
+		logger.info("About to upload the SCORM");
+
+		uploadScormFile.sendKeys(filePath);
 
 		if (msgSuccess.isDisplayed()) {
 
-			lessonNext.click();
+			logger.log(Status.PASS, "SCORM file uploaded successfully");
+
+			btnLessonNext.click();
+
+			logger.info("Cliking on next button");
 		}
 
 		return lessonSave();
 
 	}
 
-	private static ACourseModulesPage lessonSave() {
+	private ACourseModulesPage lessonSave() {
+
+		logger.info("Saving the lesson");
 
 		lessonSave.click();
+
+		logger.info("Lesson Saved Successfully");
 
 		return new ACourseModulesPage(driver);
 
 	}
 
-	public static ACourseModulesPage uploadHtml(String filePath) {
+	public ACourseModulesPage uploadHtml(String filePath) {
 
-		uploadHtml.sendKeys(filePath);
+		logger.info("About to upload the HTML5 file");
+
+		uploadHtmlFile.sendKeys(filePath);
 
 		if (msgSuccess.isDisplayed()) {
 
-			lessonNext.click();
+			logger.log(Status.PASS, "HTML5 file uploaded successfully");
+
+			btnLessonNext.click();
+
+			logger.info("Cliking on next button");
 		}
 
 		return lessonSave();
 
 	}
 
-	public static ACourseModulesPage uploadDocument(String filePath) {
+	public ACourseModulesPage uploadDocument(String filePath) {
 
-		sc = new Select(lessonSubFormat);
+		logger.info("About to upload the Document type file");
 
-		sc.selectByValue("boxapi2");
-
-		uploadDocument.sendKeys(filePath);
+		uploadDocumentFile.sendKeys(filePath);
 
 		if (msgSuccess.isDisplayed()) {
 
-			lessonNext.click();
+			logger.log(Status.PASS, "Document file uploaded successfully");
+
+			btnLessonNext.click();
+
+			logger.info("Cliking on next button");
+
 		}
 
 		return lessonSave();

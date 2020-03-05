@@ -1,36 +1,37 @@
 package com.shika.testCases;
 
-import org.openqa.selenium.support.PageFactory;
+import org.testng.annotations.Test;
+import org.testng.AssertJUnit;
+import java.lang.reflect.Method;
+
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
 import com.shika.DR.DataProviderClass;
-import com.shika.OR.admin.ALoginPage;
-import com.shika.testBase.TestBase;
+import com.shika.or.admin.ALoginPage;
+import com.shika.testbase.TestBase;
 
 public class ALoginTest extends TestBase {
 
 	@Test(dataProvider = "adminlogin", dataProviderClass = DataProviderClass.class)
 
-	public static void adminLogin(String testDesc, String un, String pw, String expMessage) {
+	public void adminLogin(String testDesc, String un, String pw, String expMessage, Method method) {
 		
-        test = extent.createTest("adminlogin");
-        
-        test.info("This step shows usage of info(details)");
+		logger = extent.createTest(method.getName().toString());
 
-		driver.get(properties.getProperty("url") + "administrator");
+		ALoginPage login = new ALoginPage(driver);
 
-		PageFactory.initElements(driver, ALoginPage.class);
+		driver.get(properties.getProperty("url") + properties.getProperty("admin"));
 
 		if (!testDesc.equals("valid")) {
 
-			ALoginPage.submitLoginExpectingFailure(un, pw);
+			login.submitLoginExpectingFailure(un, pw);
 
-			Assert.assertEquals(ALoginPage.InvalidUsername(), expMessage);
+			AssertJUnit.assertEquals(login.invalidUsername(), expMessage);
 
 		} else if (testDesc.equals("valid")) {
 
-			ALoginPage.loginAs(un, pw);
+			login.loginAs(un, pw);
 
 		}
 

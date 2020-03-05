@@ -1,5 +1,5 @@
 package com.shika.utility;
 
-public class LogUtils {
+public interface LogUtils {
 
 }

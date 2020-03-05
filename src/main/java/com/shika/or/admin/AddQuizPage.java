@@ -1,14 +1,14 @@
-package com.shika.OR.admin;
+package com.shika.or.admin;
 
 import org.openqa.selenium.WebDriver;
 
 public class AddQuizPage {
 
-	private static WebDriver driver;
+	private WebDriver driver;
 
 	public AddQuizPage(WebDriver driver) {
 		
-		AddQuizPage.driver = driver;
+		this.driver = driver;
 	}
 
 }
