@@ -6,6 +6,7 @@ import java.util.concurrent.TimeUnit;
 
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.chrome.ChromeOptions;
 import org.testng.annotations.AfterClass;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.AfterSuite;
@@ -28,11 +29,11 @@ public class TestBase {
 
 	public static ExtentReports extent;
 
-	public static  ExtentTest logger;
+	public static ExtentTest logger;
 
 	@BeforeSuite
 	public void beforeSuite() throws Exception {
-				
+
 		htmlReporter = new ExtentHtmlReporter("AutomationReport.html");
 
 		extent = new ExtentReports();
@@ -48,20 +49,16 @@ public class TestBase {
 
 		WebDriverManager.chromedriver().setup();
 
-		/*
-		 * ChromeOptions options = new ChromeOptions();
-		 * 
-		 * System.setProperty("webdriver.chrome.args", "--disable-logging");
-		 * 
-		 * System.setProperty("webdriver.chrome.silentOutput", "true");
-		 * 
-		 * options.addArguments("--headless", "--log-level=3", "--no-sandbox",
-		 * "--disable-gpu", "--window-size=1920,1200", "--ignore-certificate-errors");
-		 * 
-		 * driver = new ChromeDriver(options);
-		 */
+		ChromeOptions options = new ChromeOptions();
 
-		driver = new ChromeDriver();
+		System.setProperty("webdriver.chrome.args", "--disable-logging");
+
+		System.setProperty("webdriver.chrome.silentOutput", "true");
+
+		options.addArguments("--headless", "--log-level=3", "--no-sandbox", "--disable-gpu", "--window-size=1920,1200",
+				"--ignore-certificate-errors");
+
+		driver = new ChromeDriver(options);
 
 		driver.manage().window().maximize();
 
@@ -77,7 +74,6 @@ public class TestBase {
 	public void beforeClass() {
 
 	}
-	
 
 	@AfterMethod
 	public void afterMethod() {
