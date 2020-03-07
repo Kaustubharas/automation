@@ -3,11 +3,13 @@
 <suite name="Suite" parallel="tests">
 	<test thread-count="5" name="Test" parallel="tests">
 		<classes>
-			<class name="com.shika.testCases.ULoginTest" />
+			<!-- <class name="com.shika.testCases.ULoginTest" /> -->
 			<class name="com.shika.testCases.ALoginTest" />
-			<class name="com.shika.testCases.ACourseCategoryTest" />
-			<class name="com.shika.testCases.ACreateCourseTest" />
-			<class name="com.shika.testCases.ACreateLessonTest" />
+<!-- 			<class name="com.shika.testCases.ACourseCategoryTest" />
+ -->			<!-- <class name="com.shika.testCases.ACreateCourseTest" /> -->
+			<!-- <class name="com.shika.testCases.ACreateLessonTest" /> --> 
+	<class name="com.shika.testCases.ACourseCategoryTest" /> 
+
 		</classes>
 	</test> <!-- Test -->
 </suite> <!-- Suite -->

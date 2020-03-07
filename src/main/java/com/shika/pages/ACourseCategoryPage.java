@@ -1,5 +1,6 @@
 package com.shika.pages;
 
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -47,10 +48,24 @@ public class ACourseCategoryPage extends TestBase {
 	@FindBy(how = How.ID, using = "toolbar-trash")
 
 	private WebElement trash;
+	
+	@FindBy(how = How.ID, using = "toolbar-batch")
+	
+	private WebElement batch;
+	
+    @FindBy(how = How.XPATH, using = "//*[@id=\"batch-access\"]")
+	
+	private WebElement setAccessLevel;
 
 	@FindBy(how = How.ID, using = "filter_search")
 
 	private WebElement textboxSearch;
+	
+	@FindBy(how = How.ID, using = "cb0")
+	public WebElement check1;
+	
+	@FindBy(how = How.ID, using = "cb1")
+	public WebElement check2;
 
 	@FindBy(how = How.CSS, using = "button[data-original-title=\"Search\"]")
 
@@ -122,6 +137,119 @@ public class ACourseCategoryPage extends TestBase {
 		
 		return this;
 
+	} 
+	
+	public ACourseCategoryPage unpublishSigleCategory() {
+		
+		check1.click();
+		
+		logger.info("Clicked on unpublish button");
+		
+		return this;
+		
 	}
+	
+	public ACourseCategoryPage publishSingleCategory() {
+		
+		check1.click();
+		
+		publish.click();
+		
+		logger.info("Clicked on publish button");
+		
+		return this;	
+		
+	} 
+	
+	public ACourseCategoryPage checkinCategory() {
+		
+		check1.click();
+		checkIn.click();
+
+		logger.info("Clicked on checkin button");
+		
+		return this;	
+		
+	} 
+	
+    public ACourseCategoryPage unpublishMultipleCategories() {
+		
+		logger.info("Clicking on multiple categories to unpublish");
+		
+		check1.click();
+		check2.click();
+
+		logger.info("Clicked on unpublish button");
+		
+		unpublish.click();
+		
+		return this;	
+		
+	} 
+	
+  public ACourseCategoryPage publishMultipleCategories() {
+	
+	logger.info("Clicking on multiple categories to publish");
+	
+	check1.click();
+	check2.click();
+
+	logger.info("Clicked on publish button");
+	
+	publish.click();
+	
+	return this;	
+	
+} 
+
+   /* public ACourseCategoryPage changeAccessLevel() throws InterruptedException {
+	
+	logger.info("Change access level of multiple categories using Batch");
+	
+	check1.click();
+	check2.click();
+
+	logger.info("Clicked on batch button");
+	
+	batch.click();
+	
+	Thread.sleep(5000);
+	try {
+		setAccessLevel.click();
+
+	}catch (Exception e) {
+System.out.println("Not found");	
+
+	}
+	
+	//Select Registered user from dropdown
+	driver.findElement(By.xpath("//*[@id=\"batch_access_chzn\"]/div/ul/li[4]")).click();
+	
+	//Click on process button
+	driver.findElement(By.xpath("//*[@id=\"collapseModal\"]/div[3]/button[2]")).click();
+	
+	Thread.sleep(2000);
+	
+	return this;	
+	
+} */
+
+   public ACourseCategoryPage deleteCategories() {
+	
+	logger.info("Delete multiple categories using Trash");
+	
+	check1.click();
+	check2.click();
+
+	logger.info("Clicked on Trash button");
+	
+	trash.click();
+	
+	return this;	
+	
+} 
+
+   
+   
 
 }
