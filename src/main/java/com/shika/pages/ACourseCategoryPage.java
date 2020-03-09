@@ -62,10 +62,10 @@ public class ACourseCategoryPage extends TestBase {
 	private WebElement textboxSearch;
 	
 	@FindBy(how = How.ID, using = "cb0")
-	public WebElement category1;
+	public WebElement firstCategory;
 	
 	@FindBy(how = How.ID, using = "cb1")
-	public WebElement category2;
+	public WebElement secondCategory;
 
 	@FindBy(how = How.CSS, using = "button[data-original-title=\"Search\"]")
 
@@ -141,7 +141,7 @@ public class ACourseCategoryPage extends TestBase {
 	
 	public ACourseCategoryPage unpublishSingleCategory() {
 		
-		category1.click();
+		firstCategory.click();
 		
 		unpublish.click();
 		
@@ -153,7 +153,7 @@ public class ACourseCategoryPage extends TestBase {
 	
 	public ACourseCategoryPage publishSingleCategory() {
 		
-		category1.click();
+		firstCategory.click();
 		
 		publish.click();
 		
@@ -165,7 +165,7 @@ public class ACourseCategoryPage extends TestBase {
 	
 	public ACourseCategoryPage checkinCategory() {
 		
-		category1.click();
+		firstCategory.click();
 		checkIn.click();
 
 		logger.info("Clicked on checkin button");
@@ -178,8 +178,8 @@ public class ACourseCategoryPage extends TestBase {
 		
 		logger.info("Clicking on multiple categories to unpublish");
 		
-		category1.click();
-		category2.click();
+		firstCategory.click();
+		secondCategory.click();
 
 		unpublish.click();
 		logger.info("Clicked on unpublish button");
@@ -192,8 +192,8 @@ public class ACourseCategoryPage extends TestBase {
 	
 	    logger.info("Clicking on multiple categories to publish");
 	
- 	    category1.click();
-	    category2.click();
+	    firstCategory.click();
+		secondCategory.click();
 	
 	    publish.click();
 	    logger.info("Clicked on publish button");
@@ -207,8 +207,8 @@ public class ACourseCategoryPage extends TestBase {
 	
 	    logger.info("Delete multiple categories using Trash");
 	
-	    category1.click();
-	    category2.click();
+	    firstCategory.click();
+		secondCategory.click();
 
 	    trash.click();
 	    logger.info("Clicked on Trash button");
