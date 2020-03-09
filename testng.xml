@@ -8,6 +8,7 @@
 			<class name="com.shika.testCases.ACourseCategoryTest" />
 			<class name="com.shika.testCases.ACreateCourseTest" />
 			<class name="com.shika.testCases.ACreateLessonTest" />
+			<class name="com.shika.testCases.ACourseCreateCategoryTest" />
 		</classes>
 	</test> <!-- Test -->
 </suite> <!-- Suite -->

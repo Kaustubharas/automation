@@ -1,5 +1,6 @@
 package com.shika.pages;
 
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -47,10 +48,24 @@ public class ACourseCategoryPage extends TestBase {
 	@FindBy(how = How.ID, using = "toolbar-trash")
 
 	private WebElement trash;
+	
+	@FindBy(how = How.ID, using = "toolbar-batch")
+	
+	private WebElement btnBatch;
+	
+    @FindBy(how = How.XPATH, using = "//*[@id=\"batch-access\"]")
+	
+	private WebElement batchSetAccessLevel;
 
 	@FindBy(how = How.ID, using = "filter_search")
 
 	private WebElement textboxSearch;
+	
+	@FindBy(how = How.ID, using = "cb0")
+	public WebElement firstCategory;
+	
+	@FindBy(how = How.ID, using = "cb1")
+	public WebElement secondCategory;
 
 	@FindBy(how = How.CSS, using = "button[data-original-title=\"Search\"]")
 
@@ -122,6 +137,87 @@ public class ACourseCategoryPage extends TestBase {
 		
 		return this;
 
+	} 
+	
+	public ACourseCategoryPage unpublishSingleCategory() {
+		
+		firstCategory.click();
+		
+		unpublish.click();
+		
+		logger.info("Clicked on unpublish button");
+		
+		return this;
+		
 	}
+	
+	public ACourseCategoryPage publishSingleCategory() {
+		
+		firstCategory.click();
+		
+		publish.click();
+		
+		logger.info("Clicked on publish button");
+		
+		return this;	
+		
+	} 
+	
+	public ACourseCategoryPage checkinCategory() {
+		
+		firstCategory.click();
+		checkIn.click();
+
+		logger.info("Clicked on checkin button");
+		
+		return this;	
+		
+	} 
+	
+    public ACourseCategoryPage unpublishMultipleCategories() {
+		
+		logger.info("Clicking on multiple categories to unpublish");
+		
+		firstCategory.click();
+		secondCategory.click();
+
+		unpublish.click();
+		logger.info("Clicked on unpublish button");
+		
+		return this;	
+		
+	} 
+	
+    public ACourseCategoryPage publishMultipleCategories() {
+	
+	    logger.info("Clicking on multiple categories to publish");
+	
+	    firstCategory.click();
+		secondCategory.click();
+	
+	    publish.click();
+	    logger.info("Clicked on publish button");
+	
+	    return this;	
+	
+    } 
+
+
+    public ACourseCategoryPage deleteCategories() {
+	
+	    logger.info("Delete multiple categories using Trash");
+	
+	    firstCategory.click();
+		secondCategory.click();
+
+	    trash.click();
+	    logger.info("Clicked on Trash button");
+	
+	    return this;	
+	
+    } 
+
+   
+   
 
 }
