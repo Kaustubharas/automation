@@ -26,38 +26,21 @@ public class ACourseCategoryTest extends TestBase {
 		if (testDesc.equals("valid")) {
 
 			// Unpublish single category
-			categoryPage.searchCategory(name);
-			Thread.sleep(2000);
-			categoryPage.unpublishSigleCategory();
-			
+			categoryPage.searchCategory(name).unpublishSingleCategory();
 			
 			//Publish single category
-			categoryPage.clearSearch();
-			categoryPage.searchCategory(name);
-			Thread.sleep(2000);
-			categoryPage.publishSingleCategory();
-		
+			categoryPage.clearSearch().searchCategory(name).publishSingleCategory();
+			
 			//checkin single category
-			categoryPage.clearSearch();
-		    categoryPage.searchCategory(name);
-		    Thread.sleep(2000);
-			categoryPage.checkinCategory();
+			categoryPage.clearSearch().searchCategory(name).checkinCategory();
 			
 			//unpublish multiple categories		
-			categoryPage.clearSearch();		
-			Thread.sleep(2000);		
-			categoryPage.unpublishMultipleCategories();		
-			
+			categoryPage.clearSearch().unpublishMultipleCategories();		
+										
 			//publish multiple categories	
-			Thread.sleep(2000);
 			categoryPage.publishMultipleCategories();
 			
-			//Change access level of multiple categories
-			/* Thread.sleep(2000);
-			categoryPage.changeAccessLevel(); */
-			
-			//Delete multiple categories using Trash	
-			Thread.sleep(2000);
+			//Delete multiple categories using Trash
 			categoryPage.deleteCategories();		
 			 
 	    } 
