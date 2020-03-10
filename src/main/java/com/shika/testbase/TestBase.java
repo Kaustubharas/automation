@@ -49,7 +49,7 @@ public class TestBase {
 
 		WebDriverManager.chromedriver().setup();
 
-		/* ChromeOptions options = new ChromeOptions();
+		ChromeOptions options = new ChromeOptions();
 
 		System.setProperty("webdriver.chrome.args", "--disable-logging");
 
@@ -58,9 +58,7 @@ public class TestBase {
 		options.addArguments("--headless", "--log-level=3", "--no-sandbox", "--disable-gpu", "--window-size=1920,1200",
 				"--ignore-certificate-errors");
 
-		driver = new ChromeDriver(options); */
-		
-		driver = new ChromeDriver();
+		driver = new ChromeDriver(options);
 
 		driver.manage().window().maximize();
 
