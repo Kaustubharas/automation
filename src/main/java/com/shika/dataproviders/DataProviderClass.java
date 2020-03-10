@@ -34,14 +34,6 @@ public class DataProviderClass {
 
 	}
 
-	@DataProvider(name = "categoryList")
-
-	public static Object[][] categoryList() throws IOException {
-
-		return ExcelUtils.getExcelData(TESTDATAEXCELFILE, "categoryList");
-
-	}
-	
 	@DataProvider(name = "createCourse")
 
 	public static Object[][] createCourse() throws IOException {
