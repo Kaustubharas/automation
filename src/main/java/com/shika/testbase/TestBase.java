@@ -7,6 +7,7 @@ import java.util.concurrent.TimeUnit;
 
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.chrome.ChromeOptions;
 import org.testng.annotations.AfterClass;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.AfterSuite;
@@ -50,7 +51,16 @@ public class TestBase {
 
 		WebDriverManager.chromedriver().setup();
 
-		driver = new ChromeDriver();
+		ChromeOptions options = new ChromeOptions();
+
+		System.setProperty("webdriver.chrome.args", "--disable-logging");
+
+		System.setProperty("webdriver.chrome.silentOutput", "true");
+
+		options.addArguments("--headless", "--log-level=3", "--no-sandbox", "--disable-gpu", "--window-size=1920,1200",
+				"--ignore-certificate-errors");
+
+		driver = new ChromeDriver(options);
 
 		driver.manage().window().maximize();
 
