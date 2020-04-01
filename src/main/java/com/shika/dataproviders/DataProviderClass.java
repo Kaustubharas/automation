@@ -4,6 +4,7 @@ import java.io.IOException;
 
 import org.testng.annotations.DataProvider;
 
+import com.itextpdf.text.pdf.PdfStructTreeController.returnType;
 import com.shika.utility.ExcelUtils;
 
 public class DataProviderClass {
@@ -48,6 +49,21 @@ public class DataProviderClass {
 
 		return ExcelUtils.getExcelData(TESTDATAEXCELFILE, "createLesson");
 
+	}
+	
+	@DataProvider(name = "categoryList")
+
+	public static Object[][] categoryList() throws IOException {
+
+		return ExcelUtils.getExcelData(TESTDATAEXCELFILE, "categoryList");
+
+	}
+	
+	@DataProvider(name = "datasupplier")
+	
+	public static Object[][] datasupplier() throws IOException{
+		
+		return  ExcelUtils.dataSupplier(TESTDATAEXCELFILE);
 	}
 
 }

@@ -6,6 +6,7 @@
 			<class name="com.shika.testCases.ULoginTest" />
 			<class name="com.shika.testCases.ALoginTest" />
 			<class name="com.shika.testCases.ACourseCategoryTest" />
+			<class name="com.shika.testCases.ACreateCourseCategoryTest" />
 			<class name="com.shika.testCases.ACreateCourseTest" />
 			<class name="com.shika.testCases.ACreateLessonTest" />
 		</classes>

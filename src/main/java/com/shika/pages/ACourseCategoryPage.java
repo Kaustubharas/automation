@@ -8,6 +8,12 @@ import org.openqa.selenium.support.PageFactory;
 
 import com.shika.testbase.TestBase;
 
+/**
+ * 
+ * 
+ * @author kaustubh
+ *
+ */
 public class ACourseCategoryPage extends TestBase {
 
 	private WebDriver driver;
@@ -35,6 +41,12 @@ public class ACourseCategoryPage extends TestBase {
 	@FindBy(how = How.ID, using = "toolbar-unpublish")
 
 	private WebElement unpublish;
+
+	@FindBy(how = How.ID, using = "cb0")
+	public WebElement btnPublish;
+
+	@FindBy(how = How.ID, using = "cb1")
+	public WebElement btnUnPublish;
 
 	@FindBy(how = How.ID, using = "toolbar-archive")
 
@@ -107,7 +119,7 @@ public class ACourseCategoryPage extends TestBase {
 		textboxSearch.sendKeys(catName);
 
 		buttonSearch.click();
-		
+
 		logger.info("Clicked on Search button");
 
 		return this;
@@ -119,7 +131,86 @@ public class ACourseCategoryPage extends TestBase {
 		buttonClear.click();
 
 		logger.info("Clicked on Clear button");
-		
+
+		return this;
+
+	}
+
+	public ACourseCategoryPage unpublishSigleCategory() {
+
+		btnPublish.click();
+
+		logger.info("Clicked on unpublish button");
+
+		return this;
+
+	}
+
+	public ACourseCategoryPage publishSingleCategory() {
+
+		btnPublish.click();
+
+		publish.click();
+
+		logger.info("Clicked on publish button");
+
+		return this;
+
+	}
+
+	public ACourseCategoryPage checkinCategory() {
+
+		btnPublish.click();
+		logger.info("Clicking on checkin button");
+		checkIn.click();
+
+		return this;
+
+	}
+
+	public ACourseCategoryPage unpublishMultipleCategories() {
+
+		logger.info("Clicking on multiple categories to unpublish");
+
+		btnPublish.click();
+		btnUnPublish.click();
+
+		logger.info("Clicking on unpublish button");
+
+		unpublish.click();
+
+		return this;
+
+	}
+
+	public ACourseCategoryPage publishMultipleCategories() {
+
+		logger.info("Clicking on multiple categories to publish");
+
+		btnPublish.click();
+
+		btnUnPublish.click();
+
+		logger.info("Clicking on publish button");
+
+		publish.click();
+
+		return this;
+
+	}
+
+	public ACourseCategoryPage deleteMultipleCategories() {
+
+		logger.info("Deleting multiple categories using Trash");
+
+		btnPublish.click();
+
+		btnUnPublish.click();
+
+		logger.info("Clicking on Trash button");
+
+		trash.click();
+
 		return this;
 
 	}

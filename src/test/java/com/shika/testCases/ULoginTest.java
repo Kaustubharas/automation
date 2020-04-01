@@ -1,12 +1,9 @@
 package com.shika.testCases;
 
-import org.testng.annotations.Test;
-import org.testng.AssertJUnit;
-import org.testng.annotations.Test;
-import org.testng.AssertJUnit;
 import java.lang.reflect.Method;
+import java.util.Map;
 
-import org.testng.Assert;
+import org.testng.AssertJUnit;
 import org.testng.annotations.Test;
 
 import com.shika.dataproviders.DataProviderClass;
@@ -15,9 +12,9 @@ import com.shika.testbase.TestBase;
 
 public class ULoginTest extends TestBase {
 
-	@Test(dataProvider = "userlogin", dataProviderClass = DataProviderClass.class)
+	@Test(dataProvider = "datasupplier", dataProviderClass = DataProviderClass.class)
 
-	public void userLogin(String testDesc, String un, String pw, String expMessage, Method method) {
+	public void userLogin(Map<Object, Object> map, Method method) {
 		
 		logger = extent.createTest(method.getName());
 
@@ -27,15 +24,15 @@ public class ULoginTest extends TestBase {
 
 		driver.get(properties.getProperty("url"));
 
-		if (!testDesc.equals("valid")) {
+		if (!map.get("TestDesc").toString().equals("valid")) {
 
-			login.submitLoginExpectingFailure(un, pw);
+			login.submitLoginExpectingFailure(map.get("UserName").toString(), map.get("Password").toString());
 
-			AssertJUnit.assertEquals(login.invalidUsername(), expMessage);
+			AssertJUnit.assertEquals(login.invalidUsername(), map.get("Message"));
 
-		} else if (testDesc.equals("valid")) {
+		} else if (map.get("TestDesc").toString().equals("valid")) {
 
-			login.loginAs(un, pw);
+			login.loginAs(map.get("UserName").toString(), map.get("Password").toString());
 
 		}
 	}
